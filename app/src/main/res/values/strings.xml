@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ATMmNerede</string>
+<string-array name="bankalar">
+    <item>İş Bankası</item>
+    <item>Garanti Bankası</item>
+    <item>Akbank</item>
+    <item>Ziraat Bankası</item>
+    <item>TEB</item>
+</string-array>
+</resources>
