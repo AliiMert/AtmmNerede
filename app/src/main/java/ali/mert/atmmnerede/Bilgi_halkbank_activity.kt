@@ -20,7 +20,7 @@ class Bilgi_halkbank_activity : ComponentActivity(){
         binding = LayoutBilgiHalkbankBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        Toast.makeText(applicationContext, "Bilgiler alınıyor, lütfen bekleyin..", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, "Bilgiler alınıyor, lütfen bekleyin..", Toast.LENGTH_SHORT).show()
         //şube seçim ekranından seçilen şubenin bigisinin alınması
         val secilensube: String? = intent.getStringExtra("secilensube")
 

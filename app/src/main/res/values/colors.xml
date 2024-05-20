@@ -26,4 +26,7 @@
     <color name="endColorkuveyt">#046648</color>
     <color name="CenterColorkuveyt">#046648</color>
     <color name="startColorkuveyt">#B58300</color>
+    <color name="endColordeniz">#C64949</color>
+    <color name="CenterColordeniz">#1642AF</color>
+    <color name="startColordeniz">#082691</color>
 </resources>

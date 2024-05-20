@@ -11,5 +11,4 @@ class PostModel_finansbank {
     var SellEuroParity:String? = null
     var BuyUSDParity:String? = null
     var SellUSDParity:String? = null
-
 }

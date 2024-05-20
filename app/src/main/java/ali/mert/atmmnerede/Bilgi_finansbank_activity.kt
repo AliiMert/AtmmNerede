@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Bilgi_finansbank_activity : ComponentActivity(){
     lateinit var binding : LayoutBilgiFinansbankBinding
-
+    lateinit var secilenlati : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutBilgiFinansbankBinding.inflate(layoutInflater)
@@ -64,6 +64,7 @@ class Bilgi_finansbank_activity : ComponentActivity(){
                             binding.textViewfinansbankusdyatirma.text = "USD Satma: Mevcut"
                         }else
                             binding.textViewfinansbankusdyatirma.text = "USD Satma: Yok"
+                        secilenlati = postlist4!![i]!!.Latitude.toString()
                         binding.textViewfinansbanklati.text = postlist4!![i]!!.Latitude
                         binding.textViewfinansbanklong.text = postlist4!![i]!!.Longtitude
                     }
@@ -79,7 +80,7 @@ class Bilgi_finansbank_activity : ComponentActivity(){
             val long = binding.textViewfinansbanklong.text.toString()
             val atmadres : String = lati + ", " + long
             val gmmIntentUri = Uri.parse("geo:0,0?q=$atmadres")
-
+            //secilenlati degiskenini kullanabilrisin
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             startActivity(mapIntent)
