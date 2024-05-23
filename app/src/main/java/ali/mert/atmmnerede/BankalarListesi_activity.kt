@@ -94,6 +94,10 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
                     var intent = Intent(context, Ara_denizbank_activity::class.java)
                     startActivity(intent)
                     finish()
+                }else if(secilenbanka == "Ziraat Bankası"){
+                    var intent = Intent(context, Ara_ziraat_activity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
 
             }
@@ -117,6 +121,10 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
                     finish()
                 }else if (secilenbanka == "Denizbank"){
                     var intent  = Intent(context, Ara_denizbank_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "Ziraat Bankası"){
+                    var intent = Intent(context, Ara_ziraat_activity::class.java)
                     startActivity(intent)
                     finish()
                 }

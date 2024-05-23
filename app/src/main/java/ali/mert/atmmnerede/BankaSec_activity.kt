@@ -14,7 +14,6 @@ class BankaSec_activity : ComponentActivity() {
         binding = LayoutBankasecBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.buttonBankasecBankalistele.setOnClickListener(){
 
             val intent = Intent(this@BankaSec_activity, BankalarListesi_activity::class.java)

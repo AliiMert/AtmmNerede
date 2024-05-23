@@ -29,4 +29,7 @@
     <color name="endColordeniz">#C64949</color>
     <color name="CenterColordeniz">#1642AF</color>
     <color name="startColordeniz">#082691</color>
+    <color name="endColorziraat">#D16565</color>
+    <color name="CenterColorziraat">#C81E1E</color>
+    <color name="startColorziraat">#A80B0B</color>
 </resources>
