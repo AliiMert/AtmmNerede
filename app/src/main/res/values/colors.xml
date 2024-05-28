@@ -32,4 +32,7 @@
     <color name="endColorziraat">#D16565</color>
     <color name="CenterColorziraat">#C81E1E</color>
     <color name="startColorziraat">#A80B0B</color>
+    <color name="endColorptt">#DAD1BD</color>
+    <color name="CenterColorptt">#E4C142</color>
+    <color name="startColorptt">#E3AC06</color>
 </resources>

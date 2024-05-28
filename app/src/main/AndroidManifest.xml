@@ -41,6 +41,10 @@
             android:exported="false"/>
         <activity android:name=".Bilgi_ziraat_activity"
             android:exported="false"/>
+        <activity android:name=".Ara_ptt_activity"
+            android:exported="false"/>
+        <activity android:name=".Bilgi_ptt_activity"
+            android:exported="false"/>
         <activity
             android:name=".BankaSec_activity"
             android:exported="true"
