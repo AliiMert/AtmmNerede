@@ -152,6 +152,14 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
                     var intent = Intent(context, Ara_ptt_activity::class.java)
                     startActivity(intent)
                     finish()
+                }else if(secilenbanka == "T.GARANTİ BANKASI A.Ş."){
+                    var intent = Intent(context, Ara_garanti_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "ING BANK A.Ş."){
+                    var intent = Intent(context, Ara_ing_activity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
 
             }

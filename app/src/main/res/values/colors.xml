@@ -26,8 +26,8 @@
     <color name="endColorkuveyt">#046648</color>
     <color name="CenterColorkuveyt">#046648</color>
     <color name="startColorkuveyt">#B58300</color>
-    <color name="endColordeniz">#C64949</color>
-    <color name="CenterColordeniz">#1642AF</color>
+    <color name="endColordeniz">#BC3C3C</color>
+    <color name="CenterColordeniz">#2B4FA8</color>
     <color name="startColordeniz">#082691</color>
     <color name="endColorziraat">#D16565</color>
     <color name="CenterColorziraat">#C81E1E</color>
@@ -35,4 +35,10 @@
     <color name="endColorptt">#DAD1BD</color>
     <color name="CenterColorptt">#E4C142</color>
     <color name="startColorptt">#E3AC06</color>
+    <color name="endColorgaranti">#B1D6A2</color>
+    <color name="CenterColorgaranti">#1A7F00</color>
+    <color name="startColorgaranti">#0B310E</color>
+    <color name="endColoring">#E3C1A9</color>
+    <color name="CenterColoring">#F3873A</color>
+    <color name="startColoring">#FB6800</color>
 </resources>

@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/arkaplan_ptt">
+    android:background="@drawable/arkaplan_ing">
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/imageView17"
         android:layout_width="410dp"
         android:layout_height="140dp"
-        android:src="@drawable/pttlogosu"
+        android:src="@drawable/ingbanklogosu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -26,10 +26,10 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView13" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -37,10 +37,10 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
     <Spinner
-        android:id="@+id/spinner_ptt_il"
+        android:id="@+id/spinner_ing_il"
         android:layout_width="379dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
@@ -48,10 +48,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Spinner
-        android:id="@+id/spinner_ptt_ilce"
+        android:id="@+id/spinner_ing_ilce"
         android:layout_width="379dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
@@ -59,15 +59,15 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_ptt_il" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_ing_il" />
 
     <ListView
-        android:id="@+id/listview_ptt"
+        android:id="@+id/listview_ing"
         android:layout_width="410dp"
         android:layout_height="370dp"
         android:layout_marginTop="29dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_ptt_ilce" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_ing_ilce" />
 </androidx.constraintlayout.widget.ConstraintLayout>
