@@ -1,6 +1,6 @@
 package ali.mert.atmmnerede
 
-import ali.mert.atmmnerede.databinding.LayoutAramaIngBinding
+import ali.mert.atmmnerede.databinding.LayoutAramaHsbcBinding
 import android.R
 import android.content.Intent
 import android.os.Bundle
@@ -16,19 +16,20 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
+class Ara_hsbc_activity : ComponentActivity(), AdapterView.OnItemSelectedListener,
+    AdapterView.OnItemClickListener {
     private lateinit var checkNetworkConnection: InternetConnection //internet bağlantısı
-    lateinit var binding : LayoutAramaIngBinding
+    lateinit var binding : LayoutAramaHsbcBinding
     lateinit var arananil : String
     lateinit var arananilce : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = LayoutAramaIngBinding.inflate(layoutInflater)
+        binding = LayoutAramaHsbcBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.listviewIng?.choiceMode = ListView.CHOICE_MODE_SINGLE
-        binding.listviewIng?.onItemClickListener = this
+        binding.listviewHsbc?.choiceMode = ListView.CHOICE_MODE_SINGLE
+        binding.listviewHsbc?.onItemClickListener = this
 
         checkNetworkConnection = InternetConnection(application)
         checkNetworkConnection.observe(this) { isConnected ->
@@ -48,10 +49,10 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
         }
 
         var rf = Retrofit.Builder()
-            .baseUrl(RetrofitInterface_ing.BASE_URL)
+            .baseUrl(RetrofitInterface_hsbc.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        var API = rf.create(RetrofitInterface_ing::class.java)
+        var API = rf.create(RetrofitInterface_hsbc::class.java)
         var call = API.post
 
         call?.enqueue(object : Callback<List<PostModel_banka?>?> {
@@ -61,6 +62,7 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
             ) {
                 var postlist : List<PostModel_banka>? = response.body() as List<PostModel_banka>
                 var post = arrayOfNulls<String>(postlist!!.size)
+
                 Toast.makeText(
                     applicationContext,
                     "Bilgiler alınıyor..",
@@ -73,7 +75,7 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                 var adapter = ArrayAdapter<String>(applicationContext,
                     R.layout.simple_dropdown_item_1line, post.distinct()
                         .sortedBy { it.toString() })
-                binding.spinnerIngIl.adapter = adapter
+                binding.spinnerHsbcIl.adapter = adapter
             }
 
             override fun onFailure(call: Call<List<PostModel_banka?>?>, t: Throwable) {
@@ -82,16 +84,16 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
 
         })
 
-        binding.spinnerIngIl.onItemSelectedListener = object :
+        binding.spinnerHsbcIl.onItemSelectedListener = object :
         AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerIngIl.selectedItem
+                var secilenil = binding.spinnerHsbcIl.selectedItem
 
                 var rf2 = Retrofit.Builder()
-                    .baseUrl(RetrofitInterface_ing.BASE_URL)
+                    .baseUrl(RetrofitInterface_hsbc.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                var API2 = rf2.create(RetrofitInterface_ing::class.java)
+                var API2 = rf2.create(RetrofitInterface_hsbc::class.java)
                 var call2 = API2.post
 
                 call2?.enqueue(object : Callback<List<PostModel_banka?>?>{
@@ -99,8 +101,7 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                         call: Call<List<PostModel_banka?>?>,
                         response: Response<List<PostModel_banka?>?>
                     ) {
-                        var postlist2: List<PostModel_banka>? =
-                            response.body() as List<PostModel_banka>
+                        var postlist2 : List<PostModel_banka>? = response.body() as List<PostModel_banka>
                         var post2 = arrayOfNulls<String>(postlist2!!.size)
                         var post3 = arrayOfNulls<String>(postlist2!!.size)
 
@@ -110,15 +111,15 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                                 post3[i] = postlist2!![i]!!.neighborhood
                             }
                         }
+
                         var adapter2 = ArrayAdapter<String>(applicationContext,
-                            R.layout.simple_dropdown_item_1line,
-                            post2.distinct().filterNotNull().sortedBy { it.toString() })
-                        binding.spinnerIngIlce.adapter = adapter2
+                            R.layout.simple_dropdown_item_1line, post2.distinct().filterNotNull().sortedBy { it.toString() })
+                        binding.spinnerHsbcIlce.adapter = adapter2
 
                         var adapter3 = ArrayAdapter<String>(applicationContext,
                             R.layout.simple_list_item_1,
                             post3.distinct().filterNotNull().sortedBy { it.toString() })
-                        binding.listviewIng.adapter = adapter3
+                        binding.listviewHsbc.adapter = adapter3
                     }
 
                     override fun onFailure(call: Call<List<PostModel_banka?>?>, t: Throwable) {
@@ -134,17 +135,17 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
 
         }
 
-        binding.spinnerIngIlce.onItemSelectedListener = object :
+        binding.spinnerHsbcIlce.onItemSelectedListener = object :
         AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerIngIl.selectedItem
-                var secilenilce = binding.spinnerIngIlce.selectedItem
+                var secilenil = binding.spinnerHsbcIl.selectedItem
+                var secilenilce = binding.spinnerHsbcIlce.selectedItem
 
                 var rf3 = Retrofit.Builder()
-                    .baseUrl(RetrofitInterface_ing.BASE_URL)
+                    .baseUrl(RetrofitInterface_hsbc.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                var API3 = rf.create(RetrofitInterface_ing::class.java)
+                var API3 = rf.create(RetrofitInterface_hsbc::class.java)
                 var call3 = API3.post
 
                 call3?.enqueue(object : Callback<List<PostModel_banka?>?>{
@@ -163,7 +164,8 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                         var adapter3 = ArrayAdapter<String>(applicationContext,
                             R.layout.simple_list_item_1, post3.distinct()
                                 .filterNotNull().sortedBy { it.toString() })
-                        binding.listviewIng.adapter = adapter3
+                        binding.listviewHsbc.adapter = adapter3
+
                     }
 
                     override fun onFailure(call: Call<List<PostModel_banka?>?>, t: Throwable) {
@@ -180,16 +182,25 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
         }
     }
 
+    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
+        TODO("Not yet implemented")
+    }
+
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         var secilensube : String = p0?.getItemAtPosition(p2) as String
-        arananil = binding.spinnerIngIl.selectedItem.toString()
-        arananilce = binding.spinnerIngIlce.selectedItem.toString()
+        arananil = binding.spinnerHsbcIl.selectedItem.toString()
+        arananilce = binding.spinnerHsbcIlce.selectedItem.toString()
 
-        val intent = Intent(this@Ara_ing_activity, Bilgi_ing_activity::class.java)
+        val intent = Intent(this@Ara_hsbc_activity, Bilgi_hsbc_activity::class.java)
         intent.putExtra("secilensube",secilensube)
         intent.putExtra("arananil", arananil)
         intent.putExtra("arananilce", arananilce)
         startActivity(intent)
         finish()
     }
+
 }

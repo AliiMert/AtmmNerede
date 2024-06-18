@@ -160,6 +160,10 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
                     var intent = Intent(context, Ara_ing_activity::class.java)
                     startActivity(intent)
                     finish()
+                }else if(secilenbanka == "HSBC BANK A.Ş."){
+                    var intent = Intent(context, Ara_hsbc_activity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
 
             }
