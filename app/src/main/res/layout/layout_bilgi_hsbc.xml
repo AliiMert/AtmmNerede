@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/arkaplan_ptt">
+    android:background="@drawable/arkaplan_hsbc">
 
     <ImageView
-        android:id="@+id/imageView14"
+        android:id="@+id/imageView20"
         android:layout_width="411dp"
         android:layout_height="136dp"
-        android:src="@drawable/pttlogosu"
+        android:src="@drawable/hsbclogosu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_ptt_sehir"
+        android:id="@+id/textView_hsbc_sehir"
         android:layout_width="340dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
@@ -26,10 +26,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
     <TextView
-        android:id="@+id/textView_ptt_ilce"
+        android:id="@+id/textView_hsbc_ilce"
         android:layout_width="340dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
@@ -39,10 +39,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ptt_sehir" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_hsbc_sehir" />
 
     <TextView
-        android:id="@+id/textView_ptt_mahalle"
+        android:id="@+id/textView_hsbc_mahalle"
         android:layout_width="340dp"
         android:layout_height="30dp"
         android:layout_marginStart="24dp"
@@ -52,10 +52,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ptt_ilce" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_hsbc_ilce" />
 
     <TextView
-        android:id="@+id/textView_ptt_adres"
+        android:id="@+id/textView_hsbc_adres"
         android:layout_width="340dp"
         android:layout_height="60dp"
         android:layout_marginStart="24dp"
@@ -65,30 +65,28 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ptt_mahalle" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_hsbc_mahalle" />
 
     <Button
-        android:id="@+id/button_ptt_yoltarifial"
+        android:id="@+id/button_hsbc_yoltarifial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:text="Yol Tarifi Al"
         android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_ptt_adres" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_hsbc_adres" />
 
     <Button
-        android:id="@+id/button_ptt_anasayfayadon"
+        android:id="@+id/button_hsbc_anasayfayadon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ana Sayfaya Dön"
         android:textAllCaps="false"
-        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_ptt_yoltarifial"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintTop_toBottomOf="@+id/button_hsbc_yoltarifial"
+        app:layout_constraintVertical_bias="0.359" />
 </androidx.constraintlayout.widget.ConstraintLayout>

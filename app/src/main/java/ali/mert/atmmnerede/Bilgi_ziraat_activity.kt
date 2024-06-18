@@ -44,7 +44,9 @@ class Bilgi_ziraat_activity : ComponentActivity(){
                 var postlist : List<PostModel_banka>? = response.body() as List<PostModel_banka>
                 for (i in postlist!!.indices){
                     if (postlist!![i]!!.city == arananil && postlist!![i]!!.district == arananilce && postlist!![i]!!.neighborhood == secilensube){
-                        binding.textViewZiraatSehir.text = "Şehir: " + postlist!![i]!!.city
+                        val plakaKod = postlist[i]!!.city
+                        val sehirisim = PlakaToCity.map[plakaKod]
+                        binding.textViewZiraatSehir.text = "Şehir: " + sehirisim
                         binding.textViewZiraatIlce.text = "İlçe: " + postlist!![i]!!.district
                         binding.textViewZiraatMahalle.text = "Mahalle: " + postlist!![i]!!.neighborhood
                         binding.textViewZiraatAdres.text = "Adres: " + postlist!![i]!!.address

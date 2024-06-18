@@ -11,15 +11,13 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.BaseAdapter
 import androidx.activity.ComponentActivity
-import okhttp3.Call
-import java.io.IOException
 
 class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickListener{
     lateinit var binding: LayoutBankalarListBinding
     var constlist = ArrayList<Bankalar>()
     var adapter : BankalarAdapter ?= null
 
-    fun onGetBankListFailed(call: Call, exception: IOException)
+   /* fun onGetBankListFailed(call: Call, exception: IOException)
     {
 
     }
@@ -35,28 +33,30 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
             adapter = BankalarAdapter(this,constlist)
             binding.listView.adapter = adapter
         })
-    }
+    }*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 //tasarım ekranındaki nesnelere erişim
         binding = LayoutBankalarListBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        var bkmService = BKMService2()
-        bkmService.getBankList(::onGetBankListFailed, ::onGetBankListSuccess)
+        /*var bkmService = BKMService2()
+        bkmService.getBankList(::onGetBankListFailed, ::onGetBankListSuccess)*/
 
-////listeye banka logolarını ve isimlerini ekleme
-//        constlist.add(Bankalar("İş Bankası",R.drawable.isbankasilogosu,"İş Bankası"))
-//        constlist.add(Bankalar("Akbank",R.drawable.akbanklogosu, "Akbank"))
-//        constlist.add(Bankalar("Garanti",R.drawable.garantibankasilogosu,"Garanti"))
-//        constlist.add(Bankalar("Ziraat Bankası",R.drawable.ziraatbankasilogosu, "Ziraat Bankası"))
-//        constlist.add(Bankalar("Denizbank",R.drawable.denizbanklogosu,"Denizbank"))
-//        constlist.add(Bankalar("QNB Finansbank", R.drawable.qnblogosu, "QNB Finansbank"))
-//        constlist.add(Bankalar("KuveytTürk", R.drawable.kuveytlogosu, "KuveytTürk"))
-//        constlist.add(Bankalar("Halkbank", R.drawable.halkbanklogosu, "Halkbank"))
-//
-//        //listViewin verileri kullanabilmesi için adapter değişkeni
-//        adapter = BankalarAdapter(this,constlist)
-//        binding.listView.adapter = adapter
+//listeye banka logolarını ve isimlerini ekleme
+        constlist.add(Bankalar("İŞ BANKASI",R.drawable.isbankasilogosu,"İŞ BANKASI"))
+        constlist.add(Bankalar("AKBANK",R.drawable.akbanklogosu, "AKBANK"))
+        constlist.add(Bankalar("GARANTİ",R.drawable.garantibankasilogosu,"GARANTİ"))
+        constlist.add(Bankalar("ZİRAAT BANKASI",R.drawable.ziraatbankasilogosu, "ZİRAAT BANKASI"))
+        constlist.add(Bankalar("DENİZBANK",R.drawable.denizbanklogosu,"DENİZBANK"))
+        constlist.add(Bankalar("QNB FİNANSBANK", R.drawable.qnblogosu, "QNB FİNANSBANK"))
+        constlist.add(Bankalar("KUVEYT TÜRK", R.drawable.kuveytlogosu, "KUVEYT TÜRK"))
+        constlist.add(Bankalar("HALKBANK", R.drawable.halkbanklogosu, "HALKBANK"))
+        constlist.add(Bankalar("PTT", R.drawable.pttlogosu, "PTT"))
+        constlist.add(Bankalar("HSBC", R.drawable.hsbclogosu, "HSBC"))
+        constlist.add(Bankalar("İNG", R.drawable.ingbanklogosu, "İNG BANK"))
+        //listViewin verileri kullanabilmesi için adapter değişkeni
+        adapter = BankalarAdapter(this,constlist)
+        binding.listView.adapter = adapter
 
     }
     inner class BankalarAdapter(private val context: Context, private val constList: ArrayList<Bankalar>) : BaseAdapter() {
@@ -95,28 +95,48 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
             binding.imageViewKartresim.setOnClickListener{
                 var secilenbanka  = binding.imageViewKartresim.getTag()
 
-                if (secilenbanka == "İş Bankası"){
+                if (secilenbanka == "İŞ BANKASI"){
                     var intent = Intent(context,Ara_isbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "KuveytTürk"){
+                }else if (secilenbanka == "KUVEYT TÜRK"){
                     var intent = Intent(context,Ara_kuveyt_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "Halkbank"){
+                }else if (secilenbanka == "HALKBANK"){
                     var intent = Intent(context,Ara_halkbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "QNB Finansbank"){
+                }else if(secilenbanka == "QNB FİNANSBANK"){
                     var intent = Intent(context,Ara_finansbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "Denizbank"){
+                }else if (secilenbanka == "DENİZBANK"){
                     var intent = Intent(context, Ara_denizbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "Ziraat Bankası"){
+                }else if(secilenbanka == "ZİRAAT BANKASI"){
                     var intent = Intent(context, Ara_ziraat_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "GARANTİ"){
+                    var intent = Intent(context, Ara_garanti_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "PTT"){
+                    var intent = Intent(context, Ara_ptt_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "HSBC"){
+                    var intent = Intent(context, Ara_hsbc_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "İNG BANK"){
+                    var intent = Intent(context, Ara_ing_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "AKBANK"){
+                    var intent = Intent(context, Ara_akbank_activity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -124,40 +144,48 @@ class BankalarListesi_activity : ComponentActivity(), AdapterView.OnItemClickLis
             }
             binding.textViewKartAdi.setOnClickListener{
                 var secilenbanka : String = binding.textViewKartAdi.text.toString()
-                if (secilenbanka == "T.İŞ BANKASI A.Ş."){
+                if (secilenbanka == "İŞ BANKASI"){
                     var intent = Intent(context,Ara_isbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "KUVEYT TÜRK KATILIM BANKASI A.Ş."){
+                }else if (secilenbanka == "KUVEYT TÜRK"){
                     var intent = Intent(context,Ara_kuveyt_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "T.HALK BANKASI A.Ş."){
+                }else if (secilenbanka == "HALK BANKASI"){
                     var intent = Intent(context,Ara_halkbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "QNB FİNANSBANK A.Ş."){
+                }else if(secilenbanka == "QNB FİNANSBANK"){
                     var intent = Intent(context,Ara_finansbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if (secilenbanka == "DENİZBANK A.Ş."){
+                }else if (secilenbanka == "DENİZBANK"){
                     var intent  = Intent(context, Ara_denizbank_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "T.C.ZİRAAT BANKASI A.Ş."){
+                }else if(secilenbanka == "ZİRAAT BANKASI"){
                     var intent = Intent(context, Ara_ziraat_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "PTT A.Ş."){
+                }else if(secilenbanka == "PTT"){
                     var intent = Intent(context, Ara_ptt_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "T.GARANTİ BANKASI A.Ş."){
+                }else if(secilenbanka == "GARANTİ"){
                     var intent = Intent(context, Ara_garanti_activity::class.java)
                     startActivity(intent)
                     finish()
-                }else if(secilenbanka == "ING BANK A.Ş."){
+                }else if(secilenbanka == "İNG BANK"){
                     var intent = Intent(context, Ara_ing_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "HSBC"){
+                    var intent = Intent(context, Ara_hsbc_activity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else if(secilenbanka == "AKBANK"){
+                    var intent = Intent(context, Ara_akbank_activity::class.java)
                     startActivity(intent)
                     finish()
                 }

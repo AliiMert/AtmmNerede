@@ -15,6 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Bilgi_kuveyt_activity : ComponentActivity(){
 
     lateinit var binding : LayoutBilgiKuveytBinding
+    lateinit var secilenlati : String
+    lateinit var secilenlong : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutBilgiKuveytBinding.inflate(layoutInflater)
@@ -59,8 +61,8 @@ class Bilgi_kuveyt_activity : ComponentActivity(){
                             binding.textViewKuveytGold.text = "Altınla İşlem: Mevcut"
                         }else
                             binding.textViewKuveytGold.text = "Altınla İşlem: Mevcut Değil"
-                        binding.textViewKuveytLati.text = postlist4!![i]!!.Latitude
-                        binding.textViewKuveytLong.text = postlist4!![i]!!.Longitude
+                        secilenlati = postlist4!![i]!!.Latitude.toString()
+                        secilenlong = postlist4!![i]!!.Longitude.toString()
                     }
                 }
             }
@@ -68,9 +70,7 @@ class Bilgi_kuveyt_activity : ComponentActivity(){
             }
         })
         binding.buttonBilgiKuveytYoltarifial.setOnClickListener(){
-            val lati = binding.textViewKuveytLati.text.toString()
-            val long = binding.textViewKuveytLong.text.toString()
-            val atmadres : String = lati + ", " + long
+            val atmadres : String = secilenlati + ", " + secilenlong
             val gmmIntentUri = Uri.parse("geo:0,0?q=$atmadres")
 
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
@@ -82,15 +82,6 @@ class Bilgi_kuveyt_activity : ComponentActivity(){
             startActivity(intent)
             finish()
         }
-        binding.buttonBilgiKuveytYenidenyoltarifi.setOnClickListener(){
-            val subeadres : String = binding.textViewKuveytAdres.text.toString()
-            val adres : String = subeadres.replace("Adres: ", "")
-            val gmmIntentUri = Uri.parse("geo:0,0?q=$adres")
 
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
-            finish()
-        }
     }
 }

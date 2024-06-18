@@ -23,6 +23,7 @@
         android:layout_marginTop="56dp"
         android:text="Şehir: "
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView18" />
@@ -35,6 +36,7 @@
         android:layout_marginTop="24dp"
         android:text="Mahalle: "
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_ing_ilce" />
@@ -47,6 +49,7 @@
         android:layout_marginTop="24dp"
         android:text="Adres: "
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_ing_mahalle" />
@@ -59,6 +62,7 @@
         android:layout_marginTop="24dp"
         android:text="İlçe: "
         android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_ing_sehir" />

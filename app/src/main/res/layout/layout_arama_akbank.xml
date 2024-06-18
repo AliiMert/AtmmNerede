@@ -3,34 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/arkaplan_denizbank"
-    tools:layout_editor_absoluteY="25dp">
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imageView22"
         android:layout_width="410dp"
         android:layout_height="140dp"
-        android:src="@drawable/denizbanklogosu"
+        android:src="@drawable/akbanklogosu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="HOŞ GELDİNİZ"
         android:textColor="@color/white"
         android:textSize="40sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView22" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -38,10 +35,10 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Spinner
-        android:id="@+id/spinner_denizbank_il"
+        android:id="@+id/spinner_akbank_ilce"
         android:layout_width="379dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
@@ -49,10 +46,10 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_akbank_il" />
 
     <Spinner
-        android:id="@+id/spinner_denizbank_ilce"
+        android:id="@+id/spinner_akbank_il"
         android:layout_width="379dp"
         android:layout_height="43dp"
         android:layout_marginStart="16dp"
@@ -60,15 +57,15 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_denizbank_il" />
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
     <ListView
-        android:id="@+id/listview_denizbank"
-        android:layout_width="410dp"
-        android:layout_height="370dp"
-        android:layout_marginTop="24dp"
+        android:id="@+id/listview_akbank"
+        android:layout_width="409dp"
+        android:layout_height="377dp"
+        android:layout_marginTop="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_denizbank_ilce" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_akbank_ilce" />
 </androidx.constraintlayout.widget.ConstraintLayout>

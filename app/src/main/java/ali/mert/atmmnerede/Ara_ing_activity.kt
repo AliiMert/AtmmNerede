@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
     private lateinit var checkNetworkConnection: InternetConnection //internet bağlantısı
     lateinit var binding : LayoutAramaIngBinding
-    lateinit var arananil : String
+    lateinit var arananilisim : String
     lateinit var arananilce : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +68,8 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                 ).show()
 
                 for (i in postlist!!.indices){
-                    post[i] = postlist!![i]!!.city
+                    val plakaKod = postlist[i]!!.city //plaka kodunu al
+                    post[i] = PlakaToCity.map[plakaKod] //plakayı şehir adına değiştir
                 }
                 var adapter = ArrayAdapter<String>(applicationContext,
                     R.layout.simple_dropdown_item_1line, post.distinct()
@@ -85,7 +86,8 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
         binding.spinnerIngIl.onItemSelectedListener = object :
         AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerIngIl.selectedItem
+                var secilenilisim = binding.spinnerIngIl.selectedItem
+                var secilenil = PlakaToCity.reverseMap[secilenilisim]
 
                 var rf2 = Retrofit.Builder()
                     .baseUrl(RetrofitInterface_ing.BASE_URL)
@@ -109,7 +111,6 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
                                 post2[i] = postlist2!![i]!!.district
                                 post3[i] = postlist2!![i]!!.neighborhood
                             }
-
                         }
                         var adapter2 = ArrayAdapter<String>(applicationContext,
                             R.layout.simple_dropdown_item_1line,
@@ -138,7 +139,8 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
         binding.spinnerIngIlce.onItemSelectedListener = object :
         AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerIngIl.selectedItem
+                var secilenilisim = binding.spinnerIngIl.selectedItem
+                var secilenil = PlakaToCity.reverseMap[secilenilisim]
                 var secilenilce = binding.spinnerIngIlce.selectedItem
 
                 var rf3 = Retrofit.Builder()
@@ -183,7 +185,8 @@ class Ara_ing_activity : ComponentActivity(), AdapterView.OnItemClickListener {
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         var secilensube : String = p0?.getItemAtPosition(p2) as String
-        arananil = binding.spinnerIngIl.selectedItem.toString()
+        arananilisim = binding.spinnerIngIl.selectedItem.toString()
+        var arananil = PlakaToCity.reverseMap[arananilisim]
         arananilce = binding.spinnerIngIlce.selectedItem.toString()
 
         val intent = Intent(this@Ara_ing_activity, Bilgi_ing_activity::class.java)

@@ -38,6 +38,9 @@
     <color name="endColorgaranti">#B1D6A2</color>
     <color name="CenterColorgaranti">#1A7F00</color>
     <color name="startColorgaranti">#0B310E</color>
+    <color name="endColorhsbc">#FFFFFF</color>
+    <color name="CenterColorhsbc">#D52929</color>
+    <color name="startColorhsbc">#A50202</color>
     <color name="endColoring">#E3C1A9</color>
     <color name="CenterColoring">#F3873A</color>
     <color name="startColoring">#FB6800</color>
