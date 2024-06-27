@@ -44,4 +44,7 @@
     <color name="endColoring">#E3C1A9</color>
     <color name="CenterColoring">#F3873A</color>
     <color name="startColoring">#FB6800</color>
+    <color name="endColorakbank">#E1CECE</color>
+    <color name="CenterColorakbank">#A80B0B</color>
+    <color name="startColorakbank">#780202</color>
 </resources>

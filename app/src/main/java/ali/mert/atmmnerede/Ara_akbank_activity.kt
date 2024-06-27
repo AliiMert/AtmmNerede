@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Ara_akbank_activity : ComponentActivity(), AdapterView.OnItemClickListener {
     private lateinit var checkNetworkConnection: InternetConnection //internet bağlantısı
     lateinit var binding: LayoutAramaAkbankBinding
-    lateinit var arananil: String
+    lateinit var arananilisim: String
     lateinit var arananilce: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,7 +67,8 @@ class Ara_akbank_activity : ComponentActivity(), AdapterView.OnItemClickListener
                 ).show()
 
                 for (i in postlist!!.indices) {
-                    post[i] = postlist!![i]!!.city
+                    val plakaKod = postlist[i]!!.city //plaka kodunu al
+                    post[i] = PlakaToCity.map[plakaKod] //plakayı şehir adına değiştir
                 }
                 var adapter = ArrayAdapter<String>(applicationContext,
                     R.layout.simple_dropdown_item_1line, post.distinct()
@@ -84,7 +85,8 @@ class Ara_akbank_activity : ComponentActivity(), AdapterView.OnItemClickListener
         binding.spinnerAkbankIl.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerAkbankIl.selectedItem
+                var secilenilisim = binding.spinnerAkbankIl.selectedItem
+                var secilenil = PlakaToCity.reverseMap[secilenilisim]
 
                 var rf2 = Retrofit.Builder()
                     .baseUrl(RetrofitInterface_akbank.BASE_URL)
@@ -135,7 +137,8 @@ class Ara_akbank_activity : ComponentActivity(), AdapterView.OnItemClickListener
         binding.spinnerAkbankIlce.onItemSelectedListener = object :
             AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                var secilenil = binding.spinnerAkbankIl.selectedItem
+                var secilenilisim = binding.spinnerAkbankIl.selectedItem
+                var secilenil = PlakaToCity.reverseMap[secilenilisim]
                 var secilenilce = binding.spinnerAkbankIlce.selectedItem
 
                 var rf3 = Retrofit.Builder()
@@ -177,11 +180,13 @@ class Ara_akbank_activity : ComponentActivity(), AdapterView.OnItemClickListener
 
         }
 
+
     }
 
     override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
         var secilensube : String = p0?.getItemAtPosition(p2) as String
-        arananil = binding.spinnerAkbankIl.selectedItem.toString()
+        arananilisim = binding.spinnerAkbankIl.selectedItem.toString()
+        var arananil = PlakaToCity.reverseMap[arananilisim]
         arananilce = binding.spinnerAkbankIlce.selectedItem.toString()
 
         val intent = Intent(this@Ara_akbank_activity, Bilgi_akbank_activity::class.java)
