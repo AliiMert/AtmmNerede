@@ -70,4 +70,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_ptt_ilce" />
+
+    <Button
+        android:id="@+id/button_ptt_enyakinatm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="En Yakın ATM"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

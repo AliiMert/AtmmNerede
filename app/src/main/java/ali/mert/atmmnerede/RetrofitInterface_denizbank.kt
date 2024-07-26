@@ -6,7 +6,6 @@ import retrofit2.http.GET
 interface RetrofitInterface_denizbank {
     @get:GET("AliiMert/bankdatas/main/denizbank_data")
     val post: Call<List<PostModel_banka?>?>?
-
     companion object {
         const val BASE_URL = "https://raw.githubusercontent.com/"
     }

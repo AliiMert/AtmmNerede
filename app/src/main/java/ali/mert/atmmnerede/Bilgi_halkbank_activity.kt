@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -14,61 +15,132 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Bilgi_halkbank_activity : ComponentActivity(){
     lateinit var binding : LayoutBilgiHalkbankBinding
+    lateinit var secilenlati : String
+    lateinit var secilenlong : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutBilgiHalkbankBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                val intent = Intent(this@Bilgi_halkbank_activity, Ara_halkbank_activity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        })
 
         Toast.makeText(applicationContext, "Bilgiler alınıyor, lütfen bekleyin..", Toast.LENGTH_SHORT).show()
         //şube seçim ekranından seçilen şubenin bigisinin alınması
         val secilensube: String? = intent.getStringExtra("secilensube")
+        val arananil : String? = intent.getStringExtra("arananil")
+        val arananilce : String? = intent.getStringExtra("arananilce")
+        val bulunanenyakinadres : String? = intent.getStringExtra("bulunanenyakinadres")
+        try {
+            if (bulunanenyakinadres != null){
+                var rf = Retrofit.Builder()
+                    .baseUrl(RetrofitInterface_halkbank.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                var API = rf.create(RetrofitInterface_halkbank::class.java)
+                var call = API.post
 
-        var rf4 = Retrofit.Builder()
-            .baseUrl(RetrofitInterface_halkbank.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        var API4 = rf4.create(RetrofitInterface_halkbank::class.java)
-        var call4 = API4.post
-        binding.textViewHalkbankSehir.text = secilensube
+                call?.enqueue(object : Callback<List<PostModel_banka?>?> {
+                    override fun onResponse(
+                        call: Call<List<PostModel_banka?>?>,
+                        response: Response<List<PostModel_banka?>?>
+                    ) {
+                        var postlist : List<PostModel_banka>? = response.body() as List<PostModel_banka>
+                        for (i in postlist!!.indices){
+                            if (postlist!![i]!!.address == bulunanenyakinadres){
+                                val plakaKod = postlist[i]!!.city
+                                val sehirisim = PlakaToCity.map[plakaKod]
+                                binding.textViewHalkbankSehir.text = "Şehir: " + sehirisim
+                                binding.textViewHalkbankIlce.text = "İlçe: " + postlist!![i]!!.district
+                                binding.textViewHalkbankMahalle.text = "Mahalle: " + postlist!![i]!!.neighborhood
+                                binding.textViewHalkbankAdres.text = "Adres: " + postlist!![i]!!.address
 
-        call4?.enqueue(object : Callback<List<PostModel_halkbank?>?>{
-            override fun onResponse(
-                call: Call<List<PostModel_halkbank?>?>,
-                response: Response<List<PostModel_halkbank?>?>
-            ) {
-                var postlist4 : List<PostModel_halkbank>? = response.body() as List<PostModel_halkbank>
-
-                for (i in postlist4!!.indices){
-                    if (postlist4!![i]!!.dc_BANKA_SUBE == secilensube){
-                        binding.textViewHalkbankSehir.text = "Şehir: " + postlist4!![i]!!.dc_SEHIR
-                        binding.textViewHalkbankIlce.text = "İlçe: " + postlist4!![i]!!.dc_ILCE
-                        binding.textViewHallkbankAdresadi.text = "Adres Adı: " + postlist4!![i]!!.dc_ADRES_ADI
-                        binding.textViewHalkbankAdres.text = "Adres: " + postlist4!![i]!!.dc_ADRES
-                        binding.textViewHalkbankSubeadi.text = "Şube Kodu: " + postlist4!![i]!!.dc_BANKA_SUBE
-                        binding.textViewHalkbakPostakodu.text = "Posta Kodu: " + postlist4!![i]!!.dc_POSTA_KODU
-                        binding.textViewHalkbankBolgekoor.text = "Bölge Koordinatörlüğü: " + postlist4!![i]!!.dc_BOLGE_KOORDINATORLUGU
-
+                                secilenlati = postlist!![i]!!.latitude.toString()
+                                secilenlong = postlist!![i]!!.longitude.toString()
+                            }
+                        }
                     }
-                }
-            }
-            override fun onFailure(call: Call<List<PostModel_halkbank?>?>, t: Throwable) {
-            }
-        })
 
-        binding.buttonBilgiHalkbankYoltarifi.setOnClickListener(){
-            val subeadres: String = binding.textViewHalkbankAdres.text.toString()
-            val adres: String = subeadres.replace("Adres: ","")
-            val gmmIntentUri = Uri.parse("geo:0,0?q=$adres")
+                    override fun onFailure(call: Call<List<PostModel_banka?>?>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
 
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+                })
+            }else{
+                var rf = Retrofit.Builder()
+                    .baseUrl(RetrofitInterface_halkbank.BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                var API = rf.create(RetrofitInterface_halkbank::class.java)
+                var call = API.post
+
+                call?.enqueue(object : Callback<List<PostModel_banka?>?> {
+                    override fun onResponse(
+                        call: Call<List<PostModel_banka?>?>,
+                        response: Response<List<PostModel_banka?>?>
+                    ) {
+                        var postlist : List<PostModel_banka>? = response.body() as List<PostModel_banka>
+                        for (i in postlist!!.indices){
+                            if (postlist!![i]!!.city == arananil && postlist!![i]!!.district == arananilce && postlist!![i]!!.neighborhood == secilensube){
+                                val plakaKod = postlist[i]!!.city
+                                val sehirisim = PlakaToCity.map[plakaKod]
+                                binding.textViewHalkbankSehir.text = "Şehir: " + sehirisim
+                                binding.textViewHalkbankIlce.text = "İlçe: " + postlist!![i]!!.district
+                                binding.textViewHalkbankMahalle.text = "Mahalle: " + postlist!![i]!!.neighborhood
+                                binding.textViewHalkbankAdres.text = "Adres: " + postlist!![i]!!.address
+
+                                secilenlati = postlist!![i]!!.latitude.toString()
+                                secilenlong = postlist!![i]!!.longitude.toString()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<List<PostModel_banka?>?>, t: Throwable) {
+                        TODO("Not yet implemented")
+                    }
+                })
         }
-        binding.buttonBilgiHalkbankAnasayfayadon.setOnClickListener(){
-            val intent = Intent(this@Bilgi_halkbank_activity, BankaSec_activity::class.java)
-            startActivity(intent)
-            finish()
+        } catch (e: Exception) {
+            Toast.makeText(
+                applicationContext,
+                "Bilgiler alınırken hata oluştu: ${e.message}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        binding.buttonHalkbankYoltarifial.setOnClickListener(){
+            try {
+                val atmadres : String = secilenlati + ", " + secilenlong
+                val gmmIntentUri = Uri.parse("geo:0,0?q=$atmadres")
+                //secilenlati degiskenini kullanabilrisin
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            } catch (e: Exception) {
+                Toast.makeText(
+                    applicationContext,
+                    "Yol tarifi alınırken hata oluştu: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+        binding.buttonHalkbankAnasayfayadon.setOnClickListener(){
+            try {
+                val intent = Intent(this@Bilgi_halkbank_activity, BankaSec_activity::class.java)
+                startActivity(intent)
+                finish()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    applicationContext,
+                    "Ana sayfaya dönülürken hata oluştu: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

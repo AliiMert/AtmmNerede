@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="410dp"
-        android:layout_height="100dp"
+        android:layout_height="136dp"
         android:src="@drawable/halkbanklogosu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="56dp"
         android:text="Şehir:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
@@ -35,37 +35,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="İlçe:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_sehir" />
-
-    <TextView
-        android:id="@+id/textView_halkbank_subeadi"
-        android:layout_width="340dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Şube Adı:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_ilce" />
-
-    <TextView
-        android:id="@+id/textView_hallkbank_adresadi"
-        android:layout_width="340dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Adres Adı:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_subeadi" />
 
     <TextView
         android:id="@+id/textView_halkbank_adres"
@@ -74,60 +48,45 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="Adres:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_hallkbank_adresadi" />
-
-    <TextView
-        android:id="@+id/textView_halkbak_postakodu"
-        android:layout_width="340dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Posta Kodu:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_adres" />
-
-    <TextView
-        android:id="@+id/textView_halkbank_bolgekoor"
-        android:layout_width="340dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Bölge Koordinatörlüğü:"
-        android:textColor="@color/textColor"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_halkbak_postakodu" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_mahalle" />
 
     <Button
-        android:id="@+id/button_bilgi_halkbank_yoltarifi"
+        android:id="@+id/button_halkbank_yoltarifial"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="160dp"
         android:text="Yol Tarifi Al"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_bolgekoor" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_adres" />
 
     <Button
-        android:id="@+id/button_bilgi_halkbank_anasayfayadon"
+        android:id="@+id/button_halkbank_anasayfayadon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="Ana Sayfaya Dön"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_bilgi_halkbank_yoltarifi"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintTop_toBottomOf="@+id/button_halkbank_yoltarifial"
+        app:layout_constraintVertical_bias="0.252" />
+
+    <TextView
+        android:id="@+id/textView_halkbank_mahalle"
+        android:layout_width="340dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_halkbank_ilce" />
 </androidx.constraintlayout.widget.ConstraintLayout>
