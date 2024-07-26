@@ -4,9 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -55,14 +52,6 @@
         <activity android:name=".Ara_ing_activity"
             android:exported="false"/>
         <activity android:name=".Bilgi_ing_activity"
-            android:exported="false"/>
-        <activity android:name=".Ara_hsbc_activity"
-            android:exported="false"/>
-        <activity android:name=".Bilgi_hsbc_activity"
-            android:exported="false"/>
-        <activity android:name=".Ara_akbank_activity"
-            android:exported="false"/>
-        <activity android:name=".Bilgi_akbank_activity"
             android:exported="false"/>
         <activity
             android:name=".BankaSec_activity"
